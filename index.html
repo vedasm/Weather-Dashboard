@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather Dashboard</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="app">
+            <header class="app-header">
+                <h1>Weather Dashboard</h1>
+                <form id="search-form" class="search-form">
+                    <input type="text" id="city-input" placeholder="Search for a city..." autocomplete="off" required>
+                    <button type="submit">Search</button>
+                </form>
+            </header>
+
+            <main>
+                <p id="status-message" class="status-message"></p>
+                <section id="current-weather" class="current-weather hidden">
+                    <h2 id="location-name"></h2>
+                    <p id="location-date"></p>
+                    <div class="current-main">
+                        <span id="current-temp" class="current-temp"></span>
+                        <span id="current-condition" class="current-condition"></span>
+                    </div>
+                    <div class="current-details">
+                        <div>
+                            <span class="label">Feels Like</span>
+                            <span id="feels-like"></span>
+                        </div>
+                        <div>
+                            <span class="label">Humidity</span>
+                            <span id="humidity"></span>
+                        </div>
+                        <div>
+                            <span class="label">Wind</span>
+                            <span class="wind-speed"></span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
