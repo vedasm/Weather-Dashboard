@@ -1,10 +1,10 @@
 :root {
-    --bg: #0f172a;
-    --card-bg: #1e293b;
-    --accent: #38bdf8;
-    --text-main: #f1f5f9;
-    --text-muted: #94a3b8;
-    --danger: #f87171;
+    --bg: #f0f9ff;
+    --card-bg: #ffffff;
+    --accent: #0ea5e9;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --danger: #ef4444;
 }
 
 * {
@@ -17,9 +17,10 @@ body {
     background: var(--bg);
     backdrop-filter: blur(10px);
     color: var(--text-main);
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: "Playwrite IT Trad", cursive;
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 40px 16px;
 }
 
@@ -29,7 +30,7 @@ body {
 }
 
 .app-header h1 {
-    font-size: 26px;
+    font-size: 40px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -43,10 +44,13 @@ body {
     flex: 1;
     padding: 12px 14px;
     border-radius: 8px;
-    border: 1px solid #334155;
-    background: var(--card-bg);
+    border: 1px solid rgba(186, 230, 253, 0.6); /* Semi-transparent sky border */
+    background: rgba(255, 255, 255, 0.65);     /* Semi-transparent white */
+    backdrop-filter: blur(8px);                /* Frosted glass blur */
+    -webkit-backdrop-filter: blur(8px);
     color: var(--text-main);
     font-size: 16px;
+    font-family: inherit;
 }
 
 .search-form input:focus {
@@ -80,10 +84,14 @@ body {
 
 .current-weather {
     margin-top: 24px;
-    background: var(--card-bg);
+    background: rgba(255, 255, 255, 0.65); /* Semi-transparent white */
+    backdrop-filter: blur(12px);             /* Frosted glass blur */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8); /* Subtle glass edge */
     border-radius: 14px;
     padding: 24px;
     text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(14, 165, 233, 0.08); /* Soft sky-tinted shadow */
 }
 
 .current-weather.hidden {
