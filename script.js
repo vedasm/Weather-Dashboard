@@ -1,9 +1,7 @@
-// --- DOM references ---
 const searchForm = document.getElementById("search-form");
 const cityInput = document.getElementById("city-input");
 const statusMessage = document.getElementById("status-message");
 const currentWeatherEl = document.getElementById("current-weather");
-
 const locationNameEl = document.getElementById("location-name");
 const locationDateEl = document.getElementById("location-date");
 const currentTempEl = document.getElementById("current-temp");
@@ -12,7 +10,6 @@ const feelsLikeEl = document.getElementById("feels-like");
 const humidityEl = document.getElementById("humidity");
 const windSpeedEl = document.getElementById("wind-speed");
 
-// --- Weather code -> human readable condition (simplified WMO codes) ---
 const WEATHER_CODES = {
   0: "Clear sky",
   1: "Mainly clear",
@@ -46,11 +43,8 @@ function setStatus(message, isError = false) {
   statusMessage.classList.toggle("error", isError);
 }
 
-// --- Step 1: Convert city name to lat/lon using Open-Meteo Geocoding API ---
 async function geocodeCity(city) {
-  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
-    city
-  )}&count=1&language=en&format=json`;
+  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=en&format=json`;
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -66,12 +60,9 @@ async function geocodeCity(city) {
   return { latitude, longitude, name, country };
 }
 
-// --- Step 2: Fetch current weather for given coordinates ---
 async function fetchCurrentWeather(latitude, longitude) {
   const url =
-    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}` +
-    `&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m` +
-    `&timezone=auto`;
+    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}` + `&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m` + `&timezone=auto`;
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -82,7 +73,6 @@ async function fetchCurrentWeather(latitude, longitude) {
   return data.current;
 }
 
-// --- Step 3: Render results into the DOM ---
 function renderCurrentWeather(location, current) {
   locationNameEl.textContent = `${location.name}, ${location.country}`;
   locationDateEl.textContent = new Date(current.time).toLocaleString(
@@ -106,7 +96,6 @@ function renderCurrentWeather(location, current) {
   currentWeatherEl.classList.remove("hidden");
 }
 
-// --- Orchestration ---
 async function handleSearch(event) {
   event.preventDefault();
   const city = cityInput.value.trim();
